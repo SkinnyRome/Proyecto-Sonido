@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
 
@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.tag == "Suelo")
         {
             canJump = true;
+            rigidbody.velocity = Vector3.zero;
         }
     }
 }
