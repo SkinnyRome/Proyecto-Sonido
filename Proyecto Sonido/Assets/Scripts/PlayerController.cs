@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     public int playerId = -1;
 
-    const float slowFactor = 2.0f;
+    const float slowFactor = 5.0f;
 
     private float jumpSpeed = 8;
     private Rigidbody rigidbody;
