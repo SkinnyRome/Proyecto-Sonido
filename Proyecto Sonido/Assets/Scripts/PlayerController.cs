@@ -14,13 +14,36 @@ public class PlayerController : MonoBehaviour
     private float jumpSpeed = 8;
     private Rigidbody rigidbody;
     private bool canJump;
+    FMOD.VECTOR pos;
+    FMOD.VECTOR vel;
+
+    FMOD.VECTOR at;
+    FMOD.VECTOR up;
+
 
     // Use this for initialization
     void Start()
     {
         rigidbody = gameObject.GetComponent<Rigidbody>();
         canJump = true;
+
+        pos = new FMOD.VECTOR();
+        pos.x = gameObject.transform.position.x;
+        pos.y = gameObject.transform.position.y;
+        pos.z = gameObject.transform.position.z;
+
+        FMOD.VECTOR vel = new FMOD.VECTOR();
+        vel.x = vel.y = vel.z = 0;
+
+        FMOD.VECTOR up = new FMOD.VECTOR();
+        up.x = 0; up.y = 1; up.z = 0;
+
+        FMOD.VECTOR at = new FMOD.VECTOR();
+        at.x = 0; at.y = 0; at.z = 1;
+
+        SoundManager.instance.GetSystem().set3DListenerAttributes(0,ref pos,ref vel, ref up, ref at);
     }
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -42,8 +65,14 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        pos.x = gameObject.transform.position.x;
+        pos.y = gameObject.transform.position.y;
+        pos.z = gameObject.transform.position.z;
+
+        SoundManager.instance.GetSystem().set3DListenerAttributes(0, ref pos, ref vel, ref up, ref at);
 
 
+        //Debug.Log(pos.x);
 
     }
 

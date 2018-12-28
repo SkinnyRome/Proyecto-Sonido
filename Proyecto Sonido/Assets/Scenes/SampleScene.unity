@@ -1095,6 +1095,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363771024}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &384585353 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000014264868206, guid: ca55dd9d7d291014a8b13aaf95318a3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 499357900}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &384585354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384585353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b29a307cc1a7288449f31a67f72d5592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: tormenta.wav
 --- !u!4 &405459333 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010603562546, guid: d0c0b49979d372942ae5a964d9364111,
@@ -3411,6 +3430,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0c0b49979d372942ae5a964d9364111, type: 3}
+--- !u!1 &1541600960 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000010302070858, guid: d0c0b49979d372942ae5a964d9364111,
+    type: 3}
+  m_PrefabInstance: {fileID: 1541600959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1541600961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541600960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b29a307cc1a7288449f31a67f72d5592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: lluvia.wav
 --- !u!1 &1554378301
 GameObject:
   m_ObjectHideFlags: 0
