@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,20 +13,21 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 114183164478413610}
-  - {fileID: 114236269207789126}
+  - {fileID: 114638022238317954}
+  - {fileID: 114864026834343440}
   EditorEvents: []
   MasterBanks:
-  - {fileID: 114236269207789126}
+  - {fileID: 114864026834343440}
   StringsBanks:
-  - {fileID: 114183164478413610}
-  stringsBankWriteTime: 636806695518692647
+  - {fileID: 114638022238317954}
+  stringsBankWriteTime: 636828068952880113
   cacheVersion: 3
 --- !u!114 &114183164478413610
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -43,7 +45,8 @@ MonoBehaviour:
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -52,6 +55,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\hlocal\Proyecto Sonido\Assets\FMODAssets\Project\Build\Desktop\Master Bank.bank
   lastModified: 636806695518632808
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 12474
+  Exists: 1
+--- !u!114 &114638022238317954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: Assets\FMODAssets\Project\Build\Desktop\Master Bank.strings.bank
+  lastModified: 636828068952880113
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 672
+  Exists: 1
+--- !u!114 &114864026834343440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\skinn\OneDrive\Escritorio\UNI\4\Sonido\Proyecto\Proyecto-Sonido\Proyecto
+    Sonido\Assets\FMODAssets\Project\Build\Desktop\Master Bank.bank
+  lastModified: 636828068952685451
   LoadResult: 0
   FileSizes:
   - Name: Desktop

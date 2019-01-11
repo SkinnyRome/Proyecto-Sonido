@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     const float slowFactor = 5.0f;
 
     private float jumpSpeed = 8;
+    private float rotateSpeed = 100.0f;
     private Rigidbody rigidbody;
     private bool canJump;
     FMOD.VECTOR pos;
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
 
         //Rotate
         gameObject.transform.Rotate(gameObject.transform.up * (Input.GetAxis("Mouse X")));
+        gameObject.transform.Rotate(new Vector3(0.0f, Input.GetAxis("RotateArrowsHorizontal"), 0.0f) * rotateSpeed * Time.deltaTime);
 
         //Move
         gameObject.transform.Translate(((Input.GetAxis("Horizontal") / slowFactor)), 0, ((Input.GetAxis("Vertical") / slowFactor)));
