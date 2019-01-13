@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+public enum AMBIENCE_MUSIC {IDLE, SUSPENSE }
+
+
+
 public class SoundManager : MonoBehaviour {
 
 
@@ -10,6 +16,10 @@ public class SoundManager : MonoBehaviour {
     public static SoundManager instance = null;
 
     private FMOD.RESULT _result;
+
+    private AMBIENCE_MUSIC _ambienceMusic;
+    private FMOD.Sound ambienceSound;
+    private FMOD.Channel ambienceChannel;
 
 
     public bool checkError(FMOD.RESULT result) {
@@ -54,8 +64,10 @@ public class SoundManager : MonoBehaviour {
         //_system.set3DSettings(doppler, 1.0f, rolloff);
         //FMOD TRABAJA EN SI, METROS SEGUNDOS...
 
+        _ambienceMusic = AMBIENCE_MUSIC.SUSPENSE;
+        PlayAmbienceMusic();
 
-
+    
 
     }
 
@@ -79,4 +91,38 @@ public class SoundManager : MonoBehaviour {
 	void LateUpdate () {
         _system.update();
 	}
+
+
+    public void ChangeAmbienceMusic()
+    {
+        ambienceSound.release();
+
+
+        _ambienceMusic = (_ambienceMusic == AMBIENCE_MUSIC.IDLE) ? AMBIENCE_MUSIC.SUSPENSE : AMBIENCE_MUSIC.IDLE;
+
+        PlayAmbienceMusic();
+    }
+
+    private void PlayAmbienceMusic()
+    {
+      
+        FMOD.ChannelGroup c = new FMOD.ChannelGroup();
+
+        string soundName = null;
+        switch (_ambienceMusic)
+        {
+            case AMBIENCE_MUSIC.IDLE:
+                soundName = "Idle.mp3";
+                break;
+            case AMBIENCE_MUSIC.SUSPENSE:
+                soundName = "Suspense.mp3";
+                break;
+            default:
+                break;
+        }
+        checkError(_system.createStream("Assets/Sounds/" + soundName, FMOD.MODE.LOOP_NORMAL |  FMOD.MODE._2D, out ambienceSound));
+        checkError(_system.playSound(ambienceSound, c, false, out ambienceChannel));
+        ambienceChannel.setVolume(0.5f);
+        
+    }
 }
