@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     const float WALKING_VEL = 5.0f;
     const float RUNNING_VEL = 3.0f;
     float _velocity;
+    private FMOD.ATTRIBUTES_3D _attributes;
 
     private float jumpSpeed = 8;
     private float rotateSpeed = 100.0f;
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
         
 
-        if(Input.GetAxis("Vertical") > 0 || Input.GetAxis("Horizontal") > 0)
+        if(Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
         {
             if (Input.GetKey(KeyCode.C))
             {
@@ -105,12 +106,20 @@ public class PlayerController : MonoBehaviour
         pos.y = gameObject.transform.position.y;
         pos.z = gameObject.transform.position.z;
 
-        SoundManager.instance.GetSystem().set3DListenerAttributes(0, ref pos, ref vel, ref up, ref at);
+
+        UpdateAttributes();
+
+        SoundManager.instance.GetSystem().set3DListenerAttributes(0, ref _attributes.position, ref vel, ref _attributes.forward, ref _attributes.up);
 
 
 
     }
 
+
+    private void UpdateAttributes()
+    {
+        _attributes = FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

@@ -9,6 +9,8 @@ public class Sound3D : MonoBehaviour
     private FMOD.Sound sound;
     private FMOD.VECTOR pos;
     private FMOD.Channel channel;
+    public float _minDistance;
+    public float _maxDistance;
 
     void Start()
     {
@@ -32,6 +34,10 @@ public class Sound3D : MonoBehaviour
 
         channel.setVolume(1.0f);
         SoundManager.instance.checkError(channel.set3DAttributes(ref pos, ref vel,ref aux));
+        channel.set3DMinMaxDistance(_minDistance, _maxDistance);
+        float min, max;
+        channel.get3DMinMaxDistance(out min, out max);
+        Debug.Log("min " + min.ToString() + " max "  + max.ToString());
 
         Debug.Log(pos.x + " " + pos.y);
 

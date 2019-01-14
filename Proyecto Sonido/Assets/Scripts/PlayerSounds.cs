@@ -9,6 +9,11 @@ public class PlayerSounds : MonoBehaviour
     private PLAYER_STATE _state;
     private FMOD.Studio.EventInstance _walkInstance;
     private FMOD.Studio.EventInstance _jumpInstance;
+    private FMOD.VECTOR _position;
+    private FMOD.ATTRIBUTES_3D _attributes;
+    private FMOD.VECTOR _forward;
+    private FMOD.VECTOR _up;
+    private FMOD.VECTOR _vel;
     private int _velocityParameterIndex;
 
     
@@ -32,13 +37,28 @@ public class PlayerSounds : MonoBehaviour
 
         _state = PLAYER_STATE.STOPPED;
 
+        _attributes.velocity.x = 0;
+        _attributes.velocity.y = 0;
+        _attributes.velocity.z = 0;
+
+        UpdateAttributes();
+
       
     }
 
-    // Update is called once per frame
-    void Update()
+    void UpdateAttributes()
     {
         
+        _attributes = FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject);
+
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+
+        UpdateAttributes();
+        _walkInstance.set3DAttributes(_attributes);
     }
 
     public void SetPlayerState(PLAYER_STATE s)
