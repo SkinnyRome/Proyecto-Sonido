@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+public enum PLAYER_STATE { STOPPED, WALKING, RUNNING, JUMPING};
+
 public class PlayerController : MonoBehaviour
 {
 
-
+    private PlayerSounds _playerSounds;
     public int playerId = -1;
-
-    const float slowFactor = 5.0f;
+    private PLAYER_STATE _state;
+    const float WALKING_VEL = 5.0f;
+    const float RUNNING_VEL = 3.0f;
+    float _velocity;
 
     private float jumpSpeed = 8;
     private float rotateSpeed = 100.0f;
@@ -42,7 +46,9 @@ public class PlayerController : MonoBehaviour
         FMOD.VECTOR at = new FMOD.VECTOR();
         at.x = 0; at.y = 0; at.z = 1;
 
+        _playerSounds = gameObject.GetComponent<PlayerSounds>();
         SoundManager.instance.GetSystem().set3DListenerAttributes(0,ref pos,ref vel, ref up, ref at);
+        _state = PLAYER_STATE.STOPPED;
     }
 
 
@@ -55,15 +61,43 @@ public class PlayerController : MonoBehaviour
         gameObject.transform.Rotate(gameObject.transform.up * (Input.GetAxis("Mouse X")));
         gameObject.transform.Rotate(new Vector3(0.0f, Input.GetAxis("RotateArrowsHorizontal"), 0.0f) * rotateSpeed * Time.deltaTime);
 
-        //Move
-        gameObject.transform.Translate(((Input.GetAxis("Horizontal") / slowFactor)), 0, ((Input.GetAxis("Vertical") / slowFactor)));
-        float f = (((Input.GetAxis("Vertical") + 1) / 2) * 255);
+        
+
+        if(Input.GetAxis("Vertical") > 0 || Input.GetAxis("Horizontal") > 0)
+        {
+            if (Input.GetKey(KeyCode.C))
+            {
+                if (canJump)
+                {
+                    _velocity = RUNNING_VEL;
+                    _playerSounds.SetPlayerState(PLAYER_STATE.RUNNING);
+                }
+            }
+            else
+            {
+                if (canJump)
+                {
+                    _velocity = WALKING_VEL;
+                    _playerSounds.SetPlayerState(PLAYER_STATE.WALKING);
+                }
+            }
+            //Move
+            gameObject.transform.Translate(((Input.GetAxis("Horizontal") / _velocity)), 0, ((Input.GetAxis("Vertical") / _velocity)));
+            float f = (((Input.GetAxis("Vertical") + 1) / 2) * 255);
+
+        }
+        else
+        {
+            if(canJump)
+                _playerSounds.SetPlayerState(PLAYER_STATE.STOPPED);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (canJump) {
                 canJump = false;
                 rigidbody.velocity += jumpSpeed * Vector3.up;
+                _playerSounds.SetPlayerState(PLAYER_STATE.JUMPING);
             }
         }
 
@@ -74,7 +108,6 @@ public class PlayerController : MonoBehaviour
         SoundManager.instance.GetSystem().set3DListenerAttributes(0, ref pos, ref vel, ref up, ref at);
 
 
-        //Debug.Log(pos.x);
 
     }
 
@@ -85,6 +118,7 @@ public class PlayerController : MonoBehaviour
         {
             canJump = true;
             rigidbody.velocity = Vector3.zero;
+            _playerSounds.SetPlayerState(PLAYER_STATE.STOPPED);
         }
     }
 }

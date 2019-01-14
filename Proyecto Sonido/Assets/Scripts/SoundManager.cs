@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour {
 
 
     private FMOD.System _system;
+    private FMOD.Studio.System _studioSystem;
 
     public static SoundManager instance = null;
 
@@ -20,6 +21,8 @@ public class SoundManager : MonoBehaviour {
     private AMBIENCE_MUSIC _ambienceMusic;
     private FMOD.Sound ambienceSound;
     private FMOD.Channel ambienceChannel;
+
+
 
 
     public bool checkError(FMOD.RESULT result) {
@@ -55,6 +58,10 @@ public class SoundManager : MonoBehaviour {
         uint version;
         lowlevelSystem.getVersion(out version);
 
+        _studioSystem = FMODUnity.RuntimeManager.StudioSystem;
+        FMOD.Studio.CPU_USAGE cpuUsage;
+        _studioSystem.getCPUUsage(out cpuUsage);
+
         checkError(FMOD.Factory.System_Create(out _system));
         _system.setDSPBufferSize(1024, 10);
 
@@ -80,6 +87,11 @@ public class SoundManager : MonoBehaviour {
         return _system;
     }
 
+   
+    public FMOD.Studio.System GetStudioSystem()
+    {
+        return _studioSystem;
+    }
 
     // Use this for initialization
     void Start () {
@@ -125,4 +137,6 @@ public class SoundManager : MonoBehaviour {
         ambienceChannel.setVolume(0.5f);
         
     }
+
+    
 }

@@ -15,13 +15,38 @@ MonoBehaviour:
   EditorBanks:
   - {fileID: 114638022238317954}
   - {fileID: 114864026834343440}
-  EditorEvents: []
+  EditorEvents:
+  - {fileID: 114848150975093876}
+  - {fileID: 114116334828765214}
   MasterBanks:
   - {fileID: 114864026834343440}
   StringsBanks:
   - {fileID: 114638022238317954}
-  stringsBankWriteTime: 636828068952880113
+  stringsBankWriteTime: 636830640537821930
   cacheVersion: 3
+--- !u!114 &114116334828765214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Jump
+  guid: 5df6bf5f3befc04b8e8994807cd1a514
+  Banks:
+  - {fileID: 114864026834343440}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 5000
 --- !u!114 &114183164478413610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,6 +85,38 @@ MonoBehaviour:
   - Name: Desktop
     Value: 12474
   Exists: 1
+--- !u!114 &114359515400740630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Velocity
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114363834401646750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Velocity
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114638022238317954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,12 +130,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\FMODAssets\Project\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636828068952880113
+  lastModified: 636830640537821930
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 672
+    Value: 762
   Exists: 1
+--- !u!114 &114848150975093876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps
+  guid: 7e7b4193ef22854398abcbf287283687
+  Banks:
+  - {fileID: 114864026834343440}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 114359515400740630}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 800
 --- !u!114 &114864026834343440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,9 +174,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\skinn\OneDrive\Escritorio\UNI\4\Sonido\Proyecto\Proyecto-Sonido\Proyecto
     Sonido\Assets\FMODAssets\Project\Build\Desktop\Master Bank.bank
-  lastModified: 636828068952685451
+  lastModified: 636830640537622042
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 12474
+    Value: 38464
   Exists: 1
