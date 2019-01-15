@@ -22,6 +22,9 @@ public class SoundManager : MonoBehaviour {
     private FMOD.Sound ambienceSound;
     private FMOD.Channel ambienceChannel;
 
+    public GameObject player;
+    public GameObject source;
+
 
 
 
@@ -64,6 +67,7 @@ public class SoundManager : MonoBehaviour {
 
         checkError(FMOD.Factory.System_Create(out _system));
         _system.setDSPBufferSize(1024, 10);
+        _system.setGeometrySettings(1000.0f);
 
         checkError(_system.init(32, FMOD.INITFLAGS.NORMAL, (System.IntPtr)0));
 
@@ -102,6 +106,8 @@ public class SoundManager : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
         _system.update();
+        DebugOcclusion();
+        
 	}
 
 
@@ -138,5 +144,19 @@ public class SoundManager : MonoBehaviour {
         
     }
 
-    
+    void DebugOcclusion()
+    {
+        float dOclu;
+        float rOclu;
+
+        FMOD.VECTOR playerPos = FMODUnity.RuntimeUtils.ToFMODVector(player.transform.position);
+        FMOD.VECTOR sourcePos = FMODUnity.RuntimeUtils.ToFMODVector(source.transform.position);
+
+        _system.getGeometryOcclusion(ref playerPos, ref sourcePos, out dOclu, out rOclu);
+
+        Debug.Log("Direct Occlusion: " + dOclu + "/nReverb Occlusion: " + rOclu);
+
+
+    }
+
 }
