@@ -138,9 +138,12 @@ public class SoundManager : MonoBehaviour {
             default:
                 break;
         }
-        checkError(_system.createStream("Assets/Sounds/" + soundName, FMOD.MODE.LOOP_NORMAL |  FMOD.MODE._2D, out ambienceSound));
-        //checkError(_system.playSound(ambienceSound, c, false, out ambienceChannel));
-        ambienceChannel.setVolume(0.05f);
+        checkError(_system.createStream("Assets/Sounds/" + soundName, FMOD.MODE.LOOP_NORMAL |  FMOD.MODE._2D , out ambienceSound));
+        checkError(_system.playSound(ambienceSound, c, false, out ambienceChannel));
+
+      
+
+        ambienceChannel.setVolume(0.005f);
         
     }
 
