@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FMODPared : MonoBehaviour
+public class FMODWall : MonoBehaviour
 {
 
     private FMOD.System _system;
