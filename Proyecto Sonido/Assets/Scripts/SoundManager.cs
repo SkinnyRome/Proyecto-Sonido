@@ -106,7 +106,7 @@ public class SoundManager : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
         _system.update();
-        DebugOcclusion();
+        //DebugOcclusion();
         
 	}
 

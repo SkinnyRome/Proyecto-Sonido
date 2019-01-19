@@ -15,7 +15,7 @@ public class Reverb3D : MonoBehaviour
     {
         SoundManager.instance.checkError( SoundManager.instance.GetSystem().createReverb3D(out _reverb));
 
-        FMOD.REVERB_PROPERTIES prop = FMOD.PRESET.CAVE();
+        FMOD.REVERB_PROPERTIES prop = FMOD.PRESET.CONCERTHALL();
         _reverb.setProperties(ref prop);
         
 
@@ -23,8 +23,6 @@ public class Reverb3D : MonoBehaviour
         pos.x = gameObject.transform.position.x;
         pos.y = gameObject.transform.position.y;
         pos.z = gameObject.transform.position.z;
-
-        Debug.Log("Posicion reverb: " + pos.x.ToString() + pos.y.ToString());
 
         _reverb.set3DAttributes(ref pos, _minDist, _maxDist);
         _reverb.setActive(true);
@@ -44,7 +42,7 @@ public class Reverb3D : MonoBehaviour
         _reverb.setActive(false);
     }
 
-    public void ToogleMute()
+    public void ToogleActive()
     {
         bool result;
         _reverb.getActive(out result);

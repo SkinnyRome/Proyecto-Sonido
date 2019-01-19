@@ -20,6 +20,6 @@ public class RisaMalvada : MonoBehaviour
 
     public void OnCollisionExit(Collision collision)
     {
-        gameObject.GetComponent<Reverb3D>().ToogleMute();
+        gameObject.GetComponent<Reverb3D>().ToogleActive();
     }
 }
