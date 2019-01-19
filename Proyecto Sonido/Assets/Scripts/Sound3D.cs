@@ -28,6 +28,8 @@ public class Sound3D : MonoBehaviour
 
         if (loop)
             Play();
+
+        s.update();
        
         
     }

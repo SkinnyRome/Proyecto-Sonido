@@ -7,7 +7,9 @@ public class PlayerSounds : MonoBehaviour
 
     PlayerController _playerController;
     private PLAYER_STATE _state;
-    private FMOD.Studio.EventInstance _walkInstance;
+    private FMOD.Studio.EventInstance _normalGroundWalkInstance;
+    private FMOD.Studio.EventInstance _metalGroundWalkInstance;
+
     private FMOD.Studio.EventInstance _jumpInstance;
     private FMOD.VECTOR _position;
     private FMOD.ATTRIBUTES_3D _attributes;
@@ -26,7 +28,7 @@ public class PlayerSounds : MonoBehaviour
         FMOD.Studio.EventDescription walkDescription;
         SoundManager.instance.checkError(SoundManager.instance.GetStudioSystem().getEvent("event:/Steps", out walkDescription));
         FMOD.Studio.PARAMETER_DESCRIPTION velDescription;
-        SoundManager.instance.checkError(walkDescription.createInstance(out _walkInstance));
+        SoundManager.instance.checkError(walkDescription.createInstance(out _normalGroundWalkInstance));
 
         SoundManager.instance.checkError(walkDescription.getParameter("Velocity", out velDescription));
         _velocityParameterIndex = velDescription.index;
@@ -58,7 +60,7 @@ public class PlayerSounds : MonoBehaviour
     {
 
         UpdateAttributes();
-        _walkInstance.set3DAttributes(_attributes);
+        _normalGroundWalkInstance.set3DAttributes(_attributes);
     }
 
     public void SetPlayerState(PLAYER_STATE s)
@@ -76,18 +78,18 @@ public class PlayerSounds : MonoBehaviour
         {
             case PLAYER_STATE.STOPPED:
                 _jumpInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-                _walkInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                _normalGroundWalkInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                 break;
             case PLAYER_STATE.WALKING:
-                _walkInstance.start();
-                _walkInstance.setParameterValueByIndex(_velocityParameterIndex, 0.5f);
+                _normalGroundWalkInstance.start();
+                _normalGroundWalkInstance.setParameterValueByIndex(_velocityParameterIndex, 0.5f);
                 break;
             case PLAYER_STATE.RUNNING:
-                _walkInstance.start();
-                _walkInstance.setParameterValueByIndex(_velocityParameterIndex, 1.0f);
+                _normalGroundWalkInstance.start();
+                _normalGroundWalkInstance.setParameterValueByIndex(_velocityParameterIndex, 1.0f);
                 break;
             case PLAYER_STATE.JUMPING:
-                _walkInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                _normalGroundWalkInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                 _jumpInstance.start();
                 break;
             default:

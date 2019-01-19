@@ -16,6 +16,7 @@ public class Reverb3D : MonoBehaviour
         SoundManager.instance.checkError( SoundManager.instance.GetSystem().createReverb3D(out _reverb));
 
         FMOD.REVERB_PROPERTIES prop = FMOD.PRESET.CONCERTHALL();
+        Debug.Log("Propiedades reverb: " + prop.WetLevel.ToString() + " " + prop.LateDelay.ToString());
         _reverb.setProperties(ref prop);
         
 
